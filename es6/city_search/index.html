@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css.css">
+    <title>City Search</title>
+</head>
+<body>
+    <!-- <div class="box"></div> -->
+    <form action="" class="search-form">
+        <input type="text" class="search" placeholder="City or State">
+        <ul class="suggestions">
+            <li>Filter for a city</li>
+            <li>or a state</li>
+        </ul>
+    </form>
+    <script>
+        // 要匹配城市，城市的数据源不在本地，而在服务器上，请求数据
+        // 城市数据在哪？资源 web暴露资源的方式 URL API
+        const endpoint="https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json ";
+        // endpoint="www.baidu.com";//常量一经定义不可改变
+        // 2.引用资源，从远程到本地 BS 计算在本地
+        // 去取要花路上的时间，then 等你来拿来了
+        fetch(endpoint)
+        // 拿到了服务的数据块，json化一下，将数据变成json格式？
+        .then(blob=>blob.json())
+        // 一切就绪
+        .then(data=>{
+            console.log(data);
+            cities.push(...data);
+        })
+        const cities=[];
+        function findMatches(worldToMatch,cities){
+            // 完成匹配
+            // console.log(worldToMatch,cities);
+            return cities.filter(city=>{
+                // 条件 true 要的 ；false 不要
+                //json点操作符
+                const regex=new RegExp(worldToMatch,"gi");
+                return city.city.match(regex);
+            });
+        }
+        function displayMatches(){
+            //  console.log(this.value);
+            //  过滤后的数组为matchArray match 匹配->this.value
+            //  过滤任务，封装成一个函数
+             const matchArray=findMatches(this.value,cities);
+             console.log(matchArray);
+             const html = matchArray.map(city=>{
+                 return `
+             <li>
+                <span class="name">${city.city}</span>
+                <span class="population">${city.population}</span>
+             </li>
+             `
+             });
+             
+             document.querySelector(".suggestions").innerHTML=html;
+        }
+        // 找到input元素 不会变的，就在那，常量
+        const searchInput=document.querySelector(".search");
+        // console.log(searchInput);
+        // 事件类型keyup 注册键盘事件，事件发生时，交给回调函数
+        searchInput.addEventListener("keyup",displayMatches);
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise es6异步当家花旦</title>
+</head>
+<body>
+    <script>
+        // console.log("开始了");    
+        // fetch("https://wesbos.com/wp-json/wp/v2/posts")
+        // .then(function(res){
+        //    console.log("A");
+        // });
+        // fetch("http://data.ratp.fr/api/datasets/1.0/search/?q=paris ")
+        // .then(function(res){
+        //     console.log("B");
+        // });
+
+        // // 我们希望等到异步A和异步B发生之后，再执行C
+        // console.log("C");
+        // //顺序执行？JS执行顺序不再同步
+        // //异步，所以js的执行顺序得不到保证
+        // //怎么达到实现A->B->C
+        //对未来发生的事情
+        //将要耗时的事情，交给promise吧
+        //resolve 解决 
+        //reject 拒绝
+        // promise 处理复杂任务的执行
+
+        // const p=new Promise((resolve,reject)=>{
+        //     console.log("A");
+        //     setTimeout(()=>{
+        //         // 数据存储 mysql，读取文件，定时任务
+        //         // resolve("A is done");
+        //         //实现不了就拒绝
+        //         reject("失败的原因");
+        //     },3000);
+        // });
+        // p.then((res)=>{
+        //     console.log(res);
+        // }).catch(e=>{
+        //     console.log(e);
+        // });
+        // B如何安排？。。。
+        // A->C(A)
+        // 强制改变代码的执行顺序，让代码同步执行
+
+        const postsPromise=fetch("https://wesbos.com/wp-json/wp/v2/posts");
+        const streeCarsPromise=fetch("http://data.ratp.fr/api/datasets/1.0/search/?q=paris");
+        // js不会为异步停留
+        //最晚对的那个执行完，A,B结果，再执行C
+        // console.log("C");
+        Promise.all([postsPromise,streeCarsPromise])
+        .then(reponses=>{
+            // console.log(reponses);
+            return Promise.all(reponses.map(res=>
+                res.json()
+            ));
+        }).then(reponses=>{
+            console.log(reponses);
+        })
+        postsPromise.then() //返回的是一个promise
+    </script>
+</body>
+</html>

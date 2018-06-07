@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maps!</title>
+</head>
+<body>
+    <button>Snakes</button>
+    <button>Cry</button>
+    <button>Ice Cream</button>
+    <button>Flamin</button>
+    <button>Dancer</button>   
+    <script>
+        // 五个按钮,统计点击按钮的次数
+        // const button=document.getElementsByTagName("button");
+        // for(let i=0,len=button.length;i<len;i++){
+        //     let temp=0;
+        //     button[i].addEventListener("click",function(){
+        //        temp++;
+        //        console.log(`button[${i}]被点击了${temp}次`); 
+        //     });
+        // }
+
+        // Map 对象合集 key 类型也可以是一个对象
+        const clickCounts=new Map();
+        //json 跟map区别？key上
+        const buttons=document.querySelectorAll("button");
+        // console.log(this);
+        buttons.forEach(button=>{
+            // console.log(this);
+            clickCounts.set(button,0);
+            // console.log(clickCounts);
+            button.addEventListener("click",function(){
+                //箭头函数的this指向一定是它上一级的this指向
+                // console.log(this.innerHTML);
+                const val=clickCounts.get(this);
+                clickCounts.set(this,val+1);
+                console.log(clickCounts);
+            });
+        });
+    </script>
+</body>
+</html>
