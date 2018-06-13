@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    overflow: hidden; /*单屏，只显示一屏*/
+    /* height: 100%; */
+}
+#pureFullPage {
+    transition: all 1s ease;
+    position: relative;
+    top: 0;
+}
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.page:nth-child(1){
+    background: lightpink;
+}
+.page:nth-child(2){
+    background: lightblue;
+}
+.page:nth-child(3){
+    background: lightcoral;
+}   
+
+.page p{
+    font-size: 88px;
+}
