@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定义js对象的属性特性</title>
+</head>
+<body>
+    <script>
+        var obj={};
+        Object.defineProperty(obj,'x',{
+            value:12        //enumerable,configurable,writable默认都为false
+        });
+        console.log(obj.x);//12
+        obj.x=20;          //修改无效
+        console.log(obj.x);//12
+        for(attr in obj){
+            console.log("对象中的属性"+attr+"\n"); //'x'属性不可枚举 遍历无效
+        }
+        console.log(Object.keys(obj)); //[] 遍历无效
+        console.log(Object.getOwnPropertyNames(obj));//["x"]
+
+        Object.defineProperty(obj,'y',{
+            value:56,
+            writable:true, //configurable,enumerable默认为false
+        });
+        console.log(obj.y);//56
+        obj.y=40;
+        console.log("修改后的y为:"+obj.y);//修改后的y为:40
+
+        
+        // Object.defineProperty(obj,'z',{
+        //     value:'hello',
+        //     writable:true,
+        //     enumerable:true,
+        //     configurable:true
+        // });
+        // console.log("删除前z的值为:"+obj.z);//删除前z的值为:hello
+        // delete obj.z;
+        // console.log("删除后z的值为:"+obj.z);//删除后z的值为:undefined
+
+        // Object.defineProperty(obj,'z',{
+        //     value:'hello',
+        //     writable:true,
+        //     enumerable:true,
+        //     configurable:false
+        // });
+        // console.log("删除前z的值为:"+obj.z);//删除前z的值为:hello
+        // delete obj.z;
+        // console.log("删除后z的值为:"+obj.z);//删除后z的值为:hello
+
+        //也可以通过重新定义属性特性来修改属性的特性,但是如果configurable为false则不可以
+        //通过重新定义writable和enumerable来修改属性的特性
+        Object.defineProperty(obj,'z',{
+            value:'hello',
+            writable:false,
+            enumerable:false,
+            configurable:false
+        });
+        Object.defineProperty(obj,'z',{
+            writable:true
+        });
+        console.log("修改之前的z为:"+obj.z);
+        obj.z="world";
+        console.log("修改之后的z为:"+obj.z);//Uncaught TypeError: Cannot redefine property: z
+                                        //at Function.defineProperty (<anonymous>)
+    
+    var obj2={};
+    obj2.x=1;//等价于
+    /*
+        Object.defineProperty(obj2,'x',{
+           value:1
+           writable:true,
+           enumerable:true,
+           configurable:true
+        });
+    */
+
+     Object.defineProperty(obj2,'y',{
+           value:1
+        });//等价于
+     /*
+        Object.defineProperty(obj2,'y',{
+           value:1
+           writable:false,
+           enumerable:false,
+           configurable:false
+        });
+    */
+    </script>
+</body>
+</html>
