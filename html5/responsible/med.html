@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      width: 100%;
+    }
+    .container .banner{
+      width: 10rem;
+      height: 2.9867rem;
+    }
+    .banner img{
+      width: 100%;
+      height: 100%;
+    }
+    .prompt{
+      width: 10rem;
+      height: 0.746rem;
+      line-height: 0.746rem;
+      position: relative;
+      top: -1rem;
+      left: 0;
+      background: rgba(0,0,0,.5);
+    }
+    .prompt p{
+      font-size: 0.373rem;
+      color: #D65A52;
+      text-align: center;
+    }
+    .section .title{
+      width: 10rem;
+      height: 1.386rem;
+      line-height: 1.386rem;
+      font-size: 0.4rem;
+      color: #D65A52;
+      text-align: center;
+      position: relative;
+    }
+    .title::after{
+      position: absolute;
+      content: "";
+      width: 0.8rem;
+      height: 0.03rem;
+      background: #D65A52;
+      top: 1rem;
+      left: 4.6rem;
+    }
+    .card-list{
+      width: 9.6rem;
+      margin: 0 0.2rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .card{
+      width: 1.813rem;
+      height: 2.826rem;
+      margin:0.56rem 0 0 0.133rem;
+    }
+    .card:nth-child(5n+1){
+      margin-left: 0;
+    }
+    .card:nth-child(1),
+    .card:nth-child(2),
+    .card:nth-child(3),
+    .card:nth-child(4),
+    .card:nth-child(5){
+      margin-top: 0;
+    }
+    .card img{
+      width: 100%;
+      height: 1.813rem;
+      display: inline-block;
+    }
+    .btn{
+      margin-top: -0.6rem;
+    }
+    .btn-primary{
+      width: 1.813rem;
+      height: 0.8rem;
+      display: inline-block;
+      outline: none;
+      border: none;
+      font-size: 0.333rem;
+      color: #fff;
+      background: #D65A52;
+      border-radius: 0.05rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="banner">
+      <img src="./images/banner.jpg" alt="">
+      <div class="prompt"><p>点击下面按钮，帮我解锁吧！每个人可解锁一套解剖图集！</p></div>
+    </div>
+    <div class="content">
+      <div class="section">
+        <div class="title">
+          头颈
+        </div>
+        <div class="card-list">
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+          <div class="card">
+            <img src="./images/item.jpg" alt="">
+            <div class="btn"><button class="btn-primary">帮ta解锁</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function (w) {
+      let s = w.document;
+      // 找到html元素
+      let r = s.documentElement;
+      // 宽度的十分之一
+      let colWidth = r.clientWidth / 10; /*面试常考*/
+      console.log(colWidth);
+      r.style.fontSize = colWidth + 'px';
+    })(window)
+  </script>
+</body>
+
+</html>

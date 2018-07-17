@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #525A5A;
+            box-sizing: border-box;
+        }
+        .title{
+            font-size: 0.4444444rem;
+            margin-top: 2.0333333rem;
+            text-align: center;
+            color: #fff;
+        }
+        .content{
+            margin: 2.63888888rem 0 2.63888888rem 0;
+        }
+        .row{
+            float: right;
+            height: 1.55555556rem;
+        }
+        .item{
+            width: 1.55555556rem;
+            height: 1.55555556rem;
+            line-height: 1.55555556rem;
+            border: 1px solid #fff;
+            margin-right: 1.2222222rem;
+            margin-top: 0.777777778rem;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 0.6944444444rem;
+            color: #fff;
+        }
+        .item:nth-child(3n){
+            margin-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">输入密码</div>
+        <div class="content">
+            <div class="row">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+            </div>
+            <div class="row">
+                <div class="item">4</div>
+                <div class="item">5</div>
+                <div class="item">6</div>
+            </div>
+            <div class="row">
+                <div class="item">7</div>
+                <div class="item">8</div>
+                <div class="item">9</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 所有css之前，我们先来决定htmlfont-size应该为 1rem=设备宽度/10
+        // 适配问题 不同的手机1rem 单位是 宽度10分之1
+        // 1rem = html fontsize
+        (function (w) {
+            // window 是js 全局 dom document 只是其中一部分
+            // 导航location.href　  navigator lbs 经纬度
+            // 陀螺仪 储存localstorage
+            let s = w.document;
+            // 找到html元素
+            let r = s.documentElement;
+            // 宽度的十分之一
+            let colWidth = r.clientWidth / 10; /*面试常考*/
+
+            console.log(colWidth);
+            r.style.fontSize = colWidth + 'px';
+
+        })(window)
+    </script>
+</body>
+
+</html>
