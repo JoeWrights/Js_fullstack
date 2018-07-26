@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用绝对定位实现三列布局</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .container{
+            /* position: absolute;
+            left:0;
+            right:0; */
+            position: relative;
+        }
+        .left{
+            width: 200px;
+            height: 600px;
+            position: absolute;
+            left:0;
+            top:0;
+            background-color: cadetblue;
+        }
+        .right{
+            width: 300px;
+            height: 600px;
+            position: absolute;
+            right:0;
+            top:0;
+            background-color:burlywood;
+        }
+        .main{
+            height: 600px;
+            margin: 0 310px 0 210px;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    <h4>基本思路</h4>
+    <p>1左右两列采用绝对定位<br/>
+       2.中间区域实际上使用margin挤出来的<br/>
+    </p>
+    <h4>特点</h4>
+    <p>1.左右两列绝对定位<br/>
+       2.中间主体区自适应<br/>
+       3.中间用外边距实现<br/>
+    </p>
+    <div class="container">
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="main">main</div>
+    </div>
+    
+</body>
+</html>

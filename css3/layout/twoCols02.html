@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两列固定布局</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .container{
+            width: 960px;
+            margin: 0 auto;
+            background-color: cornflowerblue;
+            overflow: hidden;
+        }
+        /* .clear{
+            -ms-zoom:1;
+        } */
+        .clear:after{
+            content:"";
+            display:block;
+            clear: both;
+        }
+        .left{
+            width: 200px;
+            height: 600px;
+            background-color: coral;
+            float:left;
+        }
+        .right{
+            width: 750px;
+            height: 600px;
+            background-color: blueviolet;
+            float:right;
+        }
+    </style>
+</head>
+<body>
+    <h4>基本思路</h4>
+    <p>
+       1.要给左右两列添加一个父级区块<br/>
+       2.给左右两个区块设置一个浮动:left/right<br/>
+       3.给父级区块设置一个伪类让子块撑开父级<br/>
+    </p>
+    <h4>特点</h4>
+    <p>1.左右两列固定宽度<br/>
+       2.两列全部采用浮动<br/>
+       3.使用伪类撑开父级<br/>
+    </p>
+    <div class="container clear">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>采用绝对定位实现两列固定布局</title>
+    <style>
+        .container {
+            /* position: absolute;
+            left: 0;
+            right: 0; */
+            position: relative;
+            margin: auto;
+            max-width: 960px;
+            /*使用max-width可以防止出现水平滚动条*/
+        }
+
+        .left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 600px;
+            background-color: cadetblue;
+        }
+
+        .right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 750px;
+            height: 600px;
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>基本思路</h4>
+    <p>
+       1.给两列添加一个定位的父级块,并设置定位属性,一般设置为相对定位 <br/> 
+       2.给左两个区块分别使用绝对定位 <br/>
+       3.父级区块/定位父级必须设置宽度:width </br/> 
+    </p>
+    <h4>特点</h4>
+    <p>
+       1.左右两列固定布局 <br/> 
+       2.采用绝对定位布局 <br/>
+    </p>
+    <div class="container">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+</body>
+
+</html>

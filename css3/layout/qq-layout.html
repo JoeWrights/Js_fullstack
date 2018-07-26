@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ空间布局</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        body{
+            background:url("images/1.jpg") 0 41px no-repeat;
+        }
+        .top{
+            width: 100%;
+            height: 41px;
+            background-color: #000;
+            position: fixed;
+        }
+        .container{
+            width: 1100px;
+            height: 1000px;
+            /* position: relative;*/
+            position: absolute;
+            top: 41px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+        .container .header{
+            height: 200px;
+            background-color: #ccc;
+        }
+        .container .main{ /*定位父级*/
+            position: relative;
+        }
+        .container .main .left{
+            position: absolute;
+            top:0;
+            left: 0;
+            width:170px;
+            height: 520px;
+            background-color: #abc123;
+        }
+        .container .main .right{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 520px;
+            background-color: #abb09c;
+        }
+        .container .main .content{
+            height: 520px;
+            margin: 10px 310px 10px 180px;
+            background-color: #FFF7E7;
+        }
+        .container .footer{
+            height: 50px; /*只设置高度,其他继承父级*/
+            background-color: #29CE9C;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部的固定导航区 -->
+    <div class="top">顶部的固定导航区</div>
+    <!-- 主体的内容区域 -->
+    <div class="container">
+        <!-- 主体头部 -->
+        <div class="header">主体头部</div>
+        <!-- 主体 -->
+        <div class="main">
+            <!-- 主体左侧 -->
+            <div class="left">主体左侧</div>
+            <!-- 主体内容 -->
+            <div class="content">主体内容</div>
+            <!-- 主体右侧 -->
+            <div class="right">主体右侧</div>
+        </div>
+        <!-- 主体底部 -->
+        <div class="footer">主体底部</div>
+    </div>
+</body>
+</html>
