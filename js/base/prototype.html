@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js原型</title>
+</head>
+<body>
+    <script>
+        // function foo(){}
+        // foo.prototype.z=3;//foo对象原型上的属性
+        // var obj=new foo();
+        // obj.x=1;
+        // obj.y=2;
+        // console.log(obj.x);
+        // console.log(obj.y);
+        // console.log(obj.z);
+        // console.log(obj.toString());//toString方法来自Object.prototype
+        // obj.z=12;
+        // console.log(obj.z);//12 foo对象里有z就不用去原型上取值
+        // delete obj.z;
+        // console.log(obj.z);//3
+        // delete foo.prototype.z;
+        // console.log(obj.z);//undefined
+        function foo(){}
+        foo.prototype.z=3;//foo对象原型上的属性
+        var obj=new foo();
+        obj.x=1;
+        obj.y=2;
+        //通过in检测对象上是否有某个属性
+        console.log('x' in obj);//true 注意:属性名要用''括起来
+        console.log('y' in obj);//true
+        console.log('z' in obj);//true
+        console.log('toString' in obj);//true
+        //通过hasOwnProperty()检测对象上是否有某个属性(自己的属性)
+        console.log(obj.hasOwnProperty('x'));//true
+        console.log(obj.hasOwnProperty('z'));//false
+        console.log(obj.hasOwnProperty('toString'));//false
+        //通过Object.create()创建的对象的属性是属于原型的
+        var obj2=Object.create({x:1});
+        obj2.y=2;
+        obj2.z=3;
+        console.log('x' in obj2);//true
+        console.log('y' in obj2);//true
+        console.log(obj2.hasOwnProperty('x'));//false
+    </script>
+</body>
+</html>

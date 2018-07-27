@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>callback function</title>
+</head>
+<body>
+    <script>
+        // function multiply(a,b,c){
+        //     var arr=[];
+        //     for(var i=0;i<3;i++){
+        //         arr[i]=arguments[i]*2;
+        //     }
+        //     return arr;
+        // }    
+        // function addOne(a){
+        //     return a+1;
+        // }
+        // // alert(multiply(10,20,30));
+        // document.write(multiply(10,20,30)+"<br/>");
+        // var arr2=[];
+        // arr2=multiply(10,20,30);
+        // for(var i=0;i<3;i++){
+        //     arr2[i]=addOne(arr2[i]);
+        // }
+        // document.write(arr2+"<br/>");//21,41,61
+        //上述代码改为回调函数
+        function addOne(a){
+            return a+1;
+        }
+        function test(a,b,c,callback){
+            var array=[];
+            for(var i=0;i<3;i++){
+                array[i]=callback(arguments[i]*2);
+            }
+            return array;
+        }
+        document.write(test(10,20,30,addOne)+"<br/>");//21,41,61
+        //匿名函数的写法(推荐)
+        document.write(test(4,5,6,function(a){return a+1})+"<br/>");//9,11,13
+        //通过系统函数实现回调(call和apply)
+        function test2(a,b){
+            return a*b;
+        }
+        document.write(test2.call(test2,4,5)+"<br/>");//20
+        var params=[2,4];
+        document.write(test2.apply(test2,params)+"<br/>");//apply函数第二个参数为一个数组
+    </script>
+</body>
+</html>

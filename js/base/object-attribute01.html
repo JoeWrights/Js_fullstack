@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js对象的属性特性</title>
+</head>
+<body>
+    <script>
+        function Foo(){};
+        var obj=new Foo();
+        Foo.prototype.z=3;
+        obj.x=1;
+        obj.y=2;
+        console.log(obj.propertyIsEnumerable('x'));//true
+        //属性是对象自己的并且是可枚举的返回true,否则返回false
+        console.log(obj.propertyIsEnumerable('z'));//false
+        console.log(obj.k!==undefined);//false
+        console.log(obj.x!==undefined);//true
+        console.log(Object.prototype.propertyIsEnumerable('toString'));//false
+
+        var person={
+            username:"JoeWright",
+            sex:"男",
+            age:21
+        };
+        //通过Object.getOwnPropertyNames()和Object.keys()获取对象的属性名
+        console.log(Object.getOwnPropertyNames(person));// ["username", "sex", "age"]
+        console.log(Object.keys(person));//["username", "sex", "age"]
+
+    </script>
+</body>
+</html>

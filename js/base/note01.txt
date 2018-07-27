@@ -1,0 +1,44 @@
+1.多条JavaScript语句在同一行要用“;”隔开
+document.write("hello world"); document.write("javascrit");
+        
+2.javascript可以作为某个关素的事件属性值或者是超链接的href值
+<button onclick="javascript:alert('hello world!');">click me</button>
+<a href="javascript:alert('hello world');">click me</a>
+
+3.当一行代码太长时,要用“\”进行折行操作,不可以直接换行
+ document.write("hello JoeWrigth"); document.write("\
+        javascrit");
+
+4.javascript代码屏蔽
+<script>
+    <!--
+        js代码
+    //-->
+</script>
+<noscript>你的浏览器不支持JavaScript,请更换后查看</noscript>
+
+5.变量重名产生覆盖
+
+6.变量在内存中的存储和释放
+(1)收集方式
+(2)收集内容
+(3)回收算法
+
+7.js支持的数据类型
+(1)原始数据类型
+    i.数值型：十、十六、八进制,特殊值(Infinity:无穷大;NaN:0/0,可以通过isNaN()检测是否为NaN)
+    document.write((isNaN(0/0)));   //true
+    注意:NaN不能和自身比较
+    ii.字符串型:定界符,转义符(\n->回车换行,\r->换行,\t->制表符)
+    iii.布尔类型:true|false
+(2)复合数据类型
+    i.对象
+    ii.数组
+    iii.函数
+(3)特殊数据类型
+    i.undefined(只声明不赋值或者赋予一个不存在的属性值)
+    ii.null(表示什么都没有,只是一个占位符)
+    注意:两者比较
+    undefined表示变量未被赋值
+    null便是变量被赋予了一个空值
+

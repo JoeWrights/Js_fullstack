@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js函数</title>
+</head>
+<body>
+    <script>
+        // function test(){
+        //     document.write("hello world"+"<br/>");
+        // }
+        // document.write(test());//返回值为undefined
+        // function test(){
+        //     return 1;          //函数执行过程中只要执行完return语句就会停止执行
+        //     alert("hello world");   //这条语句无效
+        // }
+        // document.write(test());
+       
+        // function cal(x,y){     //实现默认参数的形式(1)
+        //     x=x||0;
+        //     y=y||1;
+        //     return x+y;
+        // }
+        // alert(cal());//1
+        // alert(cal(3,4));//7
+        // function cal(x,y){     //实现默认参数的形式(2)
+        //     x=x===undefined?0:x;
+        //     y=y===undefined?1:y;
+        //     return x+y;
+        // }
+        // alert(cal());//1
+        // alert(cal(3,4));//7
+
+        //通过argument对象接收参数
+        // function cal(x,y){
+        //     // return arguments; //object Argument
+        //     x=arguments[0]?arguments[0]:0;
+        //     y=arguments[1]?arguments[1]:1;
+        //     return x+y;
+        // }
+        // alert(cal());//1
+        // alert(cal(3,4));//7
+        //当不知道参数个数时,可以用argument.length得到传入参数的个数
+        // function cal(){
+        //     var paraNum=arguments.length;
+        //     var sum=0;
+        //     for(var i=0;i<paraNum;i++){
+        //          sum+=arguments[i];      //得到传入参数的和
+        //     }
+        //     return sum; //10
+        // }
+        // alert(cal(1,2,3,4));
+        //利用argument对象求最大值
+        // function cal(){
+        //     var max=0;
+        //     for(var i=0;i<arguments.length;i++){
+        //         if(arguments[i]>max){
+        //             max=arguments[i];
+        //         }
+        //     }
+        //     return max;
+        // }
+        // alert("最大值为:"+cal(12,23,45,65));
+        //匿名函数
+        // var sum=function(x,y){
+        //     return x+y;
+        // }
+        // document.write(sum(1,2)+"<br/>");
+        // document.write(function(x,y){return x*y;}(4,5)+"<br/>");//20
+        //回调函数
+        function cal(x,y){
+            return x()+y();
+        }
+        function test1(){
+            return 3;
+        }
+        function test2(){
+            return 5;
+        }
+        document.write(cal(test1,test2)+"<br/>");//8
+        //匿名的回调函数
+        document.write(cal(function(){return 4;},function(){return 6;})+"<br/>");//10
+        //自调函数
+        document.write((function(a,b){return a*b})(2,3));//6
+        
+    </script>
+</body>
+</html>

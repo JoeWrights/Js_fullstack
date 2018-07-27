@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>object demo</title>
+</head>
+<body>
+    <script>
+        //小明表白的故事
+        var ming={
+            name:"小明",
+            age:12,
+            hasGirlFriend:false,
+            job:null,
+            city:undefined,
+            sendFlower:function(target){
+                var flower=new Flower("满天星");
+                if(typeof target.recieveFlower=="function"){
+                    target.recieveFlower(flower,this.name);
+                }else{
+                    console.log("没到名企之前是不可以谈恋爱的");
+                }
+            }
+        };
+        var Flower=function(flowerType){
+            this.flowerType=flowerType||"玫瑰";
+        }
+        var mei={
+            name:"小梅",
+            room:"9栋2201",
+            hometown:"九江",
+            recieveFlower:function(flower,name){
+                console.log("收到"+name+"送的"+flower.flowerType);
+                // document.write("收到"+name+"送的"+flower.flowerType);
+            },
+            // 监听好心情
+            /*
+            *  功能： 提供心情监听
+            *  参数： fn 类型函数
+            *  在一段时间后，心情好了，将fn执行 
+            */
+            listenGoodMood:function(fn){
+                setTimeout(function(){
+                    fn();
+                },10000)
+            }
+        };
+        var xue={
+            name:"小雪",
+            recieveFlower:function(flower,name){
+                mei.listenGoodMood(function(){
+                    mei.recieveFlower(flower,name);
+                })
+                // 实现了同样的收花方法，  接口 interface
+                // 小雪， 小梅都实现了同样的方法， 实现了相同的接口
+                // 实现了相同的接口， 就可以互换对象
+            }
+        };
+        ming.sendFlower(mei);
+    </script>
+</body>
+</html>

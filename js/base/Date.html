@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date对象</title>
+</head>
+<body>
+    <script>
+        var date=new Date();
+        console.log(date.toLocaleString());
+        console.log(Date.now());
+        console.log(new Date(1522059489888).toLocaleString());
+        console.log(Date.parse("Mon Mar 26 2018 18:18:09 GMT+0800"));
+        console.log(Date.UTC(2015,06,03,0,0,0));//返回1970到2015的毫秒数
+        var d=new Date("2018-03-26 18:29:34");
+        console.log(d.getDay());//1  获取星期
+        console.log(d.getDate());//26 获取日
+        console.log(d.getFullYear());//2018 获取年
+        console.log(d.getMonth());//2 获取月(0~11)
+        console.log(d.getHours());
+        console.log(d.getMinutes());
+        console.log(d.getSeconds());
+        console.log(d.getMilliseconds());
+        console.log(d.getTime());//获取1970到现在的毫秒数
+        console.log(d.valueOf());//获取1970到现在的毫秒数
+        console.log(d.toJSON());
+        d.setDate(27);//设置日期
+        d.setMonth(3);//设置月份
+        d.setTime(1522059489888);
+        console.log(d.toLocaleString());
+    </script>
+</body>
+</html>

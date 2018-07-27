@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js结构语句</title>
+</head>
+
+<body>
+    <script>
+        //输出1~10的奇数
+        for (var i = 1; i <= 10; i += 2) {
+            document.write(i);
+            document.write(" ");
+        }
+        document.write("<br/>");
+        for (var i = 1; i <= 10; i++) {
+            (i % 2 != 0) ? document.write(i): document.write(" ");
+        }
+        document.write("<br/>");
+        var i = 1;
+        while (i <= 10) {
+            (i % 2 != 0) ? document.write(i): document.write(" ");
+            i++;
+        }
+        document.write("<br/>");
+        //1+2+3+....+100
+        // var sum = 0;
+        // for (var i = 1; i <= 100; i++) {
+        //     sum += i;
+        // }
+        // document.write(sum + "<br/>");//5050
+        // document.write("<br/>");
+        //break语句的使用
+        //当和大于4000时跳出循环
+        var sum = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum += i;
+            if (sum > 4000) {
+                break;
+            }
+        }
+        document.write(sum + "<br/>"); //4005
+        //continue语句的使用
+        for (var i = 1; i <= 10; i++) {
+            if (i % 2 == 0) {
+                continue; //跳过偶数
+            }
+            document.write(i + " ");
+        }
+        document.write("<br/>");
+        for (var i = 1; i <= 10; i++) {
+            if (i % 3 == 0) {
+                continue; //跳过被3整除的数
+            }
+            document.write(i + " ");
+        }
+        document.write("<br/>");
+        var sum2 = 0;
+        for (var i = 1; i <= 10; i++) {
+            if (i % 3 == 0) {
+                continue; //跳过被3整除的数并求和
+            }
+            sum2 += i;
+        }
+        document.write(sum2);
+        document.write("<br/>");
+        for (var i = 1; i <= 20; i++) {
+            if (i % 10 == 3) {
+                continue; //跳过个位数为3的数
+            }
+            document.write(i + " ");
+        }
+        document.write("<br/>");
+        document.write("<br/>");
+        //九九乘法表
+        document.write("<table border='1px' bgcolor='#dcdcdc'>")
+        document.write("<caption style='color:blue;'>");
+        document.write("九九乘法表");
+        document.write("</caption>")
+        for (var i = 1; i <= 9; i++) {
+            document.write("<tr>");
+            for (j = 1; j <= i; j++) {
+                document.write("<td>" + j + "×" + i + "=" + j * i + "</td>")
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+        document.write("<br/>");
+        //冒泡算法
+        document.write("冒泡排序" + "<br/>");
+        var array = [4, 2, 8, 6, 3, 7, 1, 5, 9, 10];
+        document.write("排序前:" + array + "<br/>");
+        for (var i = 0; i < array.length; i++) {
+            for (var j = i + 1; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        document.write("排序后:" + array + "<br/>" + "<hr/>");
+        //选择排序
+        document.write("选择排序" + "<br/>");
+        var array2 = [7, 8, 2, 3, 6, 1, 5, 10, 4, 9];
+        document.write("排序前:" + array2 + "<br/>");
+        for (var i = 0; i < array2.length - 1; i++) {
+            for (var j = i + 1; j < array2.length; j++) {
+                var min = i;
+                if (array2[j] < array2[min]) {
+                    min = j;
+                }
+                var temp = array2[i];
+                array2[i] = array2[min];
+                array2[min] = temp;
+            }
+
+        }
+        document.write("排序后:" + array2 + "<br/>" + "<hr/>");
+    </script>
+</body>
+
+</html>

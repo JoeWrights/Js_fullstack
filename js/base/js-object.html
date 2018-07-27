@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js对象</title>
+</head>
+
+<body>
+    <script>
+        //通过对象字面量创建对象
+        var obj = {
+            username: "JoeWright",
+            sex: "male",
+            grade: "大三",
+            school: "ECUT",
+            other: {
+                hobby: "basketball",
+                professical: "studenet"
+            }
+        };
+        document.write(obj);
+        console.log(obj);
+        //通过new Object()创建对象
+        var obj2 = new Object(); //创建了一个空对象
+        //通过构造函数形式创建对象
+        function Person() {
+
+        }
+        var p1 = new Person();
+        document.write(p1 instanceof Person); //true 
+        //通过instanceof检测某个对象是否属于某个构造函数创建的对象
+        //通过Object.create()函数创建对象
+        var obj3 = Object.create({
+            x: 1
+        });
+        var obj4 = Object.create(null); //创建一个没有原型的对象
+        var obj5 = Object.create(Object.prototype); //创建一个普通的空对象
+
+        //对象属性的操作
+        var obj6 = {
+            username: "JoeWright",
+            sex: "male",
+            grade: "大三",
+            school: "ECUT",
+            say: function () {
+                return "Hello World";
+            },
+            info: function () {
+                console.log("姓名:" + this.username + "\n" + "性别:" + this.sex + "\n" + "年级:" + this.grade + "\n");
+            } //通过this访问对象内部的属性 
+        };
+
+        //(1)访问对象属性
+        console.log("姓名:" + obj6.username + "\n" + "性别:" + obj6.sex + "\n");
+        console.log("姓名:" + obj6['username'] + "\n" + "性别:" + obj6['sex'] + "\n");
+        //注意:如果属性不确定，要用[];
+        var key = "username";
+        console.log(obj6.key + "\n"); //undefined
+        console.log(obj6[key] + "\n"); //JoeWright
+        console.log(obj6['key'] + "\n"); //undefined(key是一个变量,不需要用'')
+        //(2)添加对象属性
+        obj6.hobby = "basketball";
+        for (var attr in obj6) { //通过for-in遍历对象属性
+            console.log(attr + "\n");
+        }
+
+        //(3)修改对象属性
+        obj6.hobby = "baseball";
+        console.log("修改之后的兴趣:" + obj6.hobby + "\n");
+
+        //(4)删除对象属性
+        delete obj6.hobby;
+        for (var attr in obj6) { //通过for-in遍历对象属性
+            console.log(attr + "\n");
+        }
+        console.log(obj6['hobby'] + "\n"); //undefined
+
+        //访问对象里的函数
+        console.log(obj6.say() + "\n"); //Hello World
+        obj6.info(); //姓名:JoeWright 性别:male 年级:大三
+        //通过构造函数形式创建对象
+        function PersonInfo(name, sex, age) {
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.info1 = function (name, sex, age) {
+                return this.name + " " + this.sex + " " + this.age;
+            }
+        }
+        var person1 = new PersonInfo("JoeWright", "男", 21); //实例化一个对象
+        console.log(person1.name + "\n"); //JoeWright
+        console.log(person1.info1()); //JoeWright 男 21
+        person1.info2 = function () { //对象再添加一个方法
+            return 'this is a test';
+        }
+        console.log(person1.info2()); //this is a test
+
+        //通过对象value来获得key
+        function getClasses(obj, value, compare = (a, b) => a === b) {
+            return Object.keys(obj).filter(item => compare(obj[item], value));
+        }
+        var obj6 = {
+            item1: true,
+            item2: false,
+            item3: true
+        };
+        console.log(getClasses(obj6, true));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+1.js函数同名会产生覆盖
+2.函数同过return加返回值,如果没有return,默认返回值为undefined
+3.函数执行过程中只要执行完return语句就会停止执行
+4.匿名函数的两种表示方法
+(1)var sum=function(x,y){
+            return x+y;
+        }
+        document.write(sum(1,2)+"<br/>");
+(2)document.write(function(x,y){return x+y;}(1,2)+"<br/>");(自调匿名函数)
+两种方法的返回结果是一样的
+5.回调函数
+6.自调函数
+document.write(function(x,y){return x+y;}(1,2)+"<br/>");
+(1)优势:使用自调匿名函数不会产生任何全局变量
+(2)缺点:函数无法重复执行,适合执行一些一次性的或初始化的任务
+
+        

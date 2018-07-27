@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js定义多个属性特性</title>
+</head>
+<body>
+    <script>
+        var person={};
+        Object.defineProperties(person,{
+            username:{
+                value:"JoeWright",
+                writable:false,
+                enumerable:true,
+                configurable:false
+            },
+            age:{
+                value:21,
+                writable:false
+            }
+        });
+        console.log(person.username);//JoeWright
+        console.log(person.age);//21
+        //通过Object.getOwnPropertyDescriptor()获取属性的描述
+        console.log(Object.getOwnPropertyDescriptor(person,"username"));
+        //{value: "JoeWright", writable: false, enumerable: true, configurable: false}
+        console.log(Object.getOwnPropertyDescriptor(person,"age"));
+        //{value: 21, writable: false, enumerable: false, configurable: false}
+        person.addr="江西赣州";
+        console.log(Object.getOwnPropertyDescriptor(person,"addr"));
+        //{value: "江西赣州", writable: true, enumerable: true, configurable: true}
+
+        //通过isPrototypeOf()检测一个对象是不是另一个对象的原型
+        var obj={x:1};
+        var obj1=Object.create(obj);
+        console.log(obj.isPrototypeOf(obj1));//true
+        console.log(Object.prototype.isPrototypeOf(obj1));//true
+
+        //通过toString()检测对象的类型
+        console.log(obj.toString());//[object Object]
+        //很多内置对象重写了toString()方法,因此他们的toString()方法都是从Object.prototype下继承下来的
+        var date=new Date();
+        var arr=[];
+        var reg=new RegExp();
+        console.log(Object.prototype.toString.call(date));//[object Date]
+        console.log(Object.prototype.toString.call(arr));//[object Array]
+        console.log(Object.prototype.toString.call(reg));//[object RegExp]
+
+        //自己定义一个方法检测数据类型
+        function classOf(obj){
+            if(obj===null){
+                return "null";
+            }
+            if(obj===undefined){
+                return undefined;
+            }
+            return Object.prototype.toString.call(obj).slice(8,-1);
+        }
+        var bool=true;
+        console.log(bool);
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js字符串和数组函数</title>
+</head>
+
+<body>
+    <script>
+        //字符串
+        var mystring = "This is a sample";
+        document.write(mystring.length + "<br/>"); //16
+        document.write(mystring.charAt(2) + "<br/>"); //i
+        document.write(mystring.charCodeAt(8) + "<br/>"); //返回a的ascii码97
+        document.write(mystring.indexOf("is") + "<br/>"); //2返回is在字符串中的位置
+        document.write(mystring.indexOf("s", 3) + "<br/>"); //3
+        document.write(mystring.lastIndexOf("is") + "<br/>"); //5返回is在字符串中的倒数位置
+        document.write(mystring.substr(2, 2) + "<br/>"); //is从下标2开始,截取长度为2
+        document.write(mystring.substring(2, 4) + "<br/>"); //is从下标2开始,下标4结束
+        document.write(mystring.substr(1, 3) + "<br/>"); //his
+        document.write(mystring.substring(1, 4) + "<br/>"); //his
+        //split()根据指定字符将字符串分割成一个数组
+        var a = mystring.split(" ");
+        document.write(a[0] + "<br/>"); //This
+        document.write(a[1] + "<br/>"); //is
+        //replace()替换字符串
+        document.write(mystring.replace("sample", "apple") + "<br/>");
+        //toLowerCase()
+        document.write(mystring.toLowerCase() + "<br/>");
+        //toUpperCase()
+        document.write(mystring.toUpperCase() + "<br/>");
+        //数组
+        // var array=new Array(1,2,3,4,5);  //方法一
+        // var array=new Array();           //方法二
+        // array[0]=1;array[1]=2;array[2]=3;
+        var array = [1, 2, 3, 4, 5]; //方法三
+        console.log([,,].length);//2
+        console.log([,,,].length);//3
+        document.write(array[2] + "<br/>"); //3
+        //toString()方法
+        document.write(array.toString() + "<br/>"); //1,2,3,4,5
+        //join()方法,默认“,”隔开
+        document.write(array.join() + "<br/>"); //1,2,3,4,5
+        document.write(array.join("-") + "<br/>"); //1-2-3-4-5
+        document.write(array.join("+") + "<br/>"); //1+2+3+4+5
+        document.write(array.join("@") + "<br/>"); //1@2@3@4@5
+        //concat()方法:附加元素后数组长度不变
+        var array2 = [6, 7, 8];
+        document.write(array.concat(array2) + "<br/>");
+        document.write(array.length + "<br/>"); //5
+        //push()方法:数组结尾添加元素后数组长度变化
+        //unshift()方法:数组开始添加元素后数组长度变化
+        var array3 = new Array(1, 2, 3, 4, 5);
+        array3.push(6, 7, 8);
+        document.write(array3+ "<br/>");//1,2,3,4,5,6,7,8
+        document.write(array3.length + "<br/>"); //8
+        array3.unshift(6,7,8);
+        document.write(array3+ "<br/>");//6,7,8,1,2,3,4,5,6,7,8
+        //pop()方法和shift()方法
+        document.write(array.pop() + "<br/>"); //5 返回array的最后一个元素并删除
+        document.write(array.length + "<br/>"); //4
+        document.write(array.shift() + "<br/>"); //1 返回array的第一个元素并删除
+        document.write(array.length + "<br/>"); //3
+        //slice()方法
+        var array4=[1,2,3,4,5];
+        document.write(array4.slice(2,4)+"<br/>");//3,4(两个参数时,包括首不包括尾)
+        document.write(array4.slice(2)+"<br/>");//3,4,5(一个参数时,返回从开始到数组结尾的所有项)
+        //splice()方法 :一个参数时删除从开始到数组结尾的所有项,长度改变
+        //两个参数时,第二个参数为要删除的长度
+        document.write(array4.splice(2,2)+"<br/>");//3,4
+        document.write(array4+"<br/>");//1,2,5
+        
+    </script>
+</body>
+
+</html>

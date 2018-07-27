@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js Error对象</title>
+</head>
+<body>
+    <script>
+        // try{
+        //     fun();
+        // }catch(e){
+        //     alert(e.name+":"+e.message);
+        // }
+
+        // try{
+        //     fun();
+        // }catch(e){
+        //     alert(e.name+":"+e.message);
+        // }finally{
+        //     alert("我总是被调用");
+        // }
+        
+        try{
+            fun();
+        }catch(e){
+            if(e instanceof EvalError){
+                alert("Eval错误"+":"+e.message);
+            }else if(e instanceof RangeError){
+                alert("Rang错误"+":"+e.message);
+            }else if(e instanceof ReferenceError){
+                alert("Reference错误"+":"+e.message);
+            }else if(e instanceof TypeError){
+                alert("Type错误"+":"+e.message);
+            }else{
+                alert("其他错误");
+            }
+        }
+    </script>
+</body>
+</html>

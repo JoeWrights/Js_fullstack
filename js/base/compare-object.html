@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传递对象和对象比较</title>
+</head>
+<body>
+    <script>
+        var obj1={x:1};
+        var obj2={x:1};
+        console.log(obj1==obj2);//false
+        //对象做比较时,只有两个引用同时指向同一对象时为true,否则为false
+        var obj3={x:1};
+        var obj4=obj3;//此时两者指向同一个对象
+        obj4.x=123; //对象的传递是通过引用传递的,引用上做的改变会影响原对象
+        console.log(obj4.x);//123
+        console.log(obj3.x);//123
+        
+        function fun(obj){
+            obj.x=55;
+        }
+        fun(obj3);
+        console.log(obj3.x);//55
+        console.log(obj4.x);//55
+        console.log(obj3===obj4);//true
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="javascript:alert('hello world!');">click me</button>
+    <a href="javascript:alert('hello world');">click me</a>
+    <script>
+        document.write("hello world"); document.write("javascript");
+        //多条JavaScript语句在同一行要用“;”隔开
+        document.write('<br/>');
+        document.write("hello JoeWright"); document.write("\
+        javascript");
+        //当一行代码太长时,要用“\”进行折行操作,不可以直接换行
+        document.write('<br/>');
+        document.write(0/0);  //NaN:Not a Number
+        document.write("<br/>");
+        document.write((isNaN(0/0)));   //true
+        alert("a\nb\rc\td");document.write("<br/>");
+        document.write(String.NotExists);//undefined
+        var a=null;
+        alert(a);   //null
+        alert(null==undefined); //true
+        alert(null===undefined);//false
+    </script>
+</body>
+</html>

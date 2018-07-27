@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js正则表达式</title>
+</head>
+<body>
+    <script>
+        //方法一
+        var patt=new RegExp("javascript");//要匹配的字符串
+        var res=patt.test("javascript course");//测试有没有匹配的字符串
+        console.log(res);//true
+        //方法二
+        var patt=/javascript/;
+        var res=patt.test("javascript course");
+        console.log(res);//true
+        
+        var patt=/Javascript/;
+        var res=patt.test("javascript course");
+        console.log(res);//false
+
+        var patt=/Javascript/i; //i表示不区分忽略大小写
+        var res=patt.test("javascript course");
+        console.log(res);//true
+        //[]
+        var res=/[abc]/.test("blue");
+        console.log(res);//true
+
+        var res=/[^abc]/.test("lue");//^表示取反
+        console.log(res);//true
+
+        var res=/[0-9]/.test("hello world");//检测是否包含数字
+        console.log(res);//false
+
+        var res=/[^0-9]/.test("hello world");
+        console.log(res);//true
+
+        var res=/[a-z]/.test("hello world");//检测是否包含字母
+        console.log(res);//true
+
+        var res=/php|ios|javascript/.test("php");//'|'表示任意一项
+        console.log(res);//true
+        
+        //元字符
+        console.log("元字符");
+        var res=/./.test("\n");//.表示除换行符以外的全部字符
+        console.log(res);//false
+
+        var res=/./.test("hello world");
+        console.log(res);//true
+
+        var res=/\w/.test("hello world");//\w表示[a-zA-Z0-9]
+        console.log(res);//true
+        
+        var res=/\w/.test("!@#$%");
+        console.log(res);//false
+
+        var res=/\W/.test("!@#$%");//\W表示[^a-zA-Z0-9]
+        console.log(res);//true
+
+        var res=/\s/.test("hello world");//\s表示查找空白字符
+        console.log(res);//true
+
+        var res=/\S/.test(" ");//\S表示查找非空白字符
+        console.log(res);//false
+
+        var res=/\bg/.test("good");//\b表示查找单词的边界
+        console.log(res);//true
+        var res=/g\b/.test("good");//'g'后面不是单词的边界
+        console.log(res);//false
+
+        var res=/g\B/.test("good");//\B表示查找非单词的边界
+        console.log(res);//true
+
+        var res=/\d/.test(1233);//\d表示查找数字
+        console.log(res);//true
+
+        var res=/\D/.test(1233);//\D表示查找非数字
+        console.log(res);//false
+
+        //量词
+        var res=/o+/.test("google");//o+表示包含至少一个o的字符串
+        console.log(res);//true
+
+        var res=/o*/.test("google");//o*表示包含零个或多个o的字符串
+        console.log(res);//true
+
+        var res=/o?/.test("google");//o?表示包含零个或一个o的字符串
+        console.log(res);//true
+
+        var res=/o{2}/.test("google");//o{2}表示匹配包含2个o的字符串
+        console.log(res);//true
+
+        var res=/o{1,3}/.test("google");//o{1,3}表示匹配包含1-3个o的字符串
+        console.log(res);//true
+
+        var res=/^J/.test("Joe");//^J表示匹配以J开始
+        console.log(res);//true
+
+        var res=/e$/.test("Joe");//e$表示匹配以e结尾
+        console.log(res);//true
+
+        var res=/o(?=w)/.test("helloworld");//?=w表示紧接跟上w
+        console.log(res);//true
+
+        var res=/o(?!w)/.test("helloJoe");//?!w表示紧接不跟上w
+        console.log(res);//true
+
+        var res=/o{3,}/.test("gooogle");//o{3,}表示至少出现3次o
+        console.log(res);//true
+        
+        var str="this is a test";
+        var patt=/t/ig;
+        var arr=[];
+        arr=patt.exec(str);
+        console.log(arr);//["t", index: 0, input: "this is a test", groups: undefined]
+        //遍历所有的匹配
+        // while(arr!==null){
+        //     var msg="找到了"+arr[0]+"!";
+        //     msg+="下一个匹配从"+patt.lastIndex+"开始";
+        //     console.log(msg);
+        // }
+        var patt=/IS/ig;
+        res=str.match(patt);
+        console.log(res);//(2) ["is", "is"]
+        res=str.search(patt);
+        console.log(res);//2  search()返回所找到字符串的第一个位置
+
+        res=str.replace(patt,'!');
+        console.log(res);//th! ! a test(全局替换)
+
+        res=str.replace(/IS/i,'!');
+        console.log(res);//th! is a test(没有全局替换)
+
+        var str="2018-03-26";
+        res=str.replace(/(\d{4})-(\d{2})-(\d{2})/,'$2/$3/$1');
+        console.log(res);//03/26/2018
+        
+        //找到所匹配的字符并用其他字符替换
+        var str="Hello World Javascript";
+        res=str.replace(/[A-Z]/g,func);
+        function func(match){
+            return match.toLowerCase();
+        }
+        console.log(res);//hello world javascript
+
+        res=str.split(/\s+/);//通过一个或多个空格拆分
+        console.log(res);//["Hello", "World", "Javascript"]
+        
+        //手机号验证^[1][3,4,5,7,8]\d{9}$
+        function isPhoneCode(str){
+            var reg=/^[1][3,4,5,7,8]\d{9}$/;
+            return reg.test(str);
+        }
+        //邮箱验证^\w+(\.\w+)*@\w+(\.\w+)$
+        function isEmail(str){
+            var reg=/^\w+(\.\w+)*@\w+(\.\w+)$/;
+            return reg.test(str);
+        }
+        console.log(isEmail("JoeWright@qq.com"));//true
+    </script>
+    <form action="#">
+        <input type="text" id="phone" placeholder="请输入手机号">
+        <input type="submit" id="verify" value="验证">
+    </form>
+</body>
+</html>
