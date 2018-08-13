@@ -19,6 +19,13 @@ console.log(_.uniq([1, 2, 2]));  //[ 1, 2 ]
 
 //filter和reject，过滤集合，传入匿名函数。
 console.log(_.filter([1, 2], item => item > 1)); //[2]
+
+//reject:根据条件去除某元素
+var foo = [
+  {id: 0, name: 'Joe', age: 33},
+  {id: 1, name: 'JoeWright', age: 21} 
+];
+console.log(_.reject(foo, ['age', 33]));  //[ { id: 1, name: 'JoeWright', age: 21 } ]
 console.log(_.reject([1, 2], item => item > 1)); //[1]
 console.log(_.filter([
   {
@@ -67,5 +74,9 @@ console.log(_.merge(
 
 //difference:返回一个新数组，去除相同的部分
 console.log(_.difference([2, 1], [2, 3]));  //[ 1 ]
+
+//differenceBy
+console.log(_.differenceBy([1.2, 2.3], [2, 3.5], Math.floor));  //[ 1.2 ]
+console.log(_.differenceBy([{'a':1}, {'a':2}], [{'a':1}], 'a'));  //[ { a: 2 } ]
 
 //
